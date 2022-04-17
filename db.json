@@ -17,6 +17,12 @@
       "text": "Go to School",
       "day": "7th of May, 2022",
       "reminder": true
+    },
+    {
+      "text": "Code",
+      "day": "10th of May, 2022",
+      "reminder": true,
+      "id": 4
     }
   ]
 }

@@ -31,12 +31,28 @@ function App() {
   }
 
   //Add Task
-  const addTask = (task) => {
-    const id = Math.floor(Math.random() * 10000);
+  //1st ---> Static data
+  // const addTask = (task) => {
+  //   const id = Math.floor(Math.random() * 10000);
 
-    const newTask = { id, ...task };
+  //   const newTask = { id, ...task };
 
-    setTasks([...tasks, newTask])
+  //   setTasks([...tasks, newTask])
+  // }
+
+  //2nd ---> HTTP request
+  const addTask = async (task) => {
+    const response = await fetch("http://localhost:5000/tasks", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify(task)
+    });
+
+    const data = response.json();
+
+    setTasks([...tasks, data]);
   }
 
   const [showTask, setShowTask] = useState(false);
