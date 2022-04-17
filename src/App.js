@@ -7,9 +7,17 @@ function App() {
   const [tasks, setTasks] = useState([]);
 
   //delete tasks individually
-  const deleteHandler = (id) => {
-    setTasks(tasks.filter((task) => task.id !== id
-    ))
+  //1st ---> Delete from the static data define in the code itself
+  // const deleteHandler = (id) => {
+  //   setTasks(tasks.filter((task) => task.id !== id
+  //   ))
+  // }
+
+  //2nd ---> Delete from the server using HTTP request
+  const deleteHandler = async (id) => {
+   await fetch(`http://localhost:5000/tasks/${id}`, {
+     method: "DELETE"
+   })
   }
 
   //toggle reminder for the tasks
