@@ -1,25 +1,10 @@
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
 import Add from "./components/Add";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
-  const [tasks, setTasks] = useState([{
-    id: 1,
-    text: "Read Books",
-    day: "5th of May, 2022",
-    reminder: true
-  }, {
-    id: 2,
-    text: "Study for Exam",
-    day: "6th of May, 2022",
-    reminder: false
-  }, {
-    id: 3,
-    text: "Go to School",
-    day: "7th of May, 2022",
-    reminder: true
-  }]);
+  const [tasks, setTasks] = useState([]);
 
   //delete tasks individually
   const deleteHandler = (id) => {
@@ -47,6 +32,37 @@ function App() {
   }
 
   const [showTask, setShowTask] = useState(false);
+
+  //GET/Tasks from the Server
+
+  //1st method
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/tasks")
+  //     .then((response) => {
+  //       response.json()
+  //         .then((data) => {
+  //           setTasks(data);
+  //         })
+  //     })
+  // })
+
+  //2nd method
+  useEffect (() => {
+    const getTasks = async () => {
+      const tasksFromServer = await fetchTasks();
+      setTasks(tasksFromServer);
+    }
+
+    getTasks();
+  })
+
+  const fetchTasks = async () => {
+    const response = await fetch("http://localhost:5000/tasks");
+
+    const data = await response.json();
+
+    return data;
+  }
 
   return (
     <div className="container">
