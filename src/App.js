@@ -20,17 +20,28 @@ function App() {
     reminder: true
   }]);
 
+  //delete tasks individually
   const deleteHandler = (id) => {
     setTasks(tasks.filter((task) => task.id !== id
     ))
+  }
+
+  //toggle reminder for the tasks
+  const toggleReminder = (id) => {
+    setTasks(tasks.map((task) =>
+      task.id !== id ? task : {
+        ...task,
+        reminder: !task.reminder
+      })
+    )
   }
 
   return (
     <div className="container">
       <Header title="Task Tracker" />
       {tasks.length > 0 ?
-        <Tasks tasks={tasks} onDelete={deleteHandler} />
-      : "No tasks to show"}
+        <Tasks tasks={tasks} onDelete={deleteHandler} onToggle={toggleReminder} />
+        : "No tasks to show"}
     </div>
   );
 }
