@@ -4,6 +4,7 @@ import Add from "./components/Add";
 import { useState, useEffect } from "react";
 
 function App() {
+  /*
   const [tasks, setTasks] = useState([]);
 
   //delete tasks individually
@@ -125,7 +126,9 @@ function App() {
     return data;
   }
 
-  return (
+  */
+
+  /*return (
     <div className="container">
       <Header
         title="Task Tracker"
@@ -136,6 +139,12 @@ function App() {
       {tasks.length > 0 ?
         <Tasks tasks={tasks} onDelete={deleteHandler} onToggle={toggleReminder} />
         : "No tasks to show"}
+    </div>
+  );*/
+
+  return (
+    <div>
+
     </div>
   );
 }
