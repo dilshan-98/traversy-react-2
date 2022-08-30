@@ -1,9 +1,13 @@
-import Header from "./components/Header";
-import Tasks from "./components/Tasks";
-import Add from "./components/Add";
-import { useState, useEffect } from "react";
 
-function App() {
+function App() {  return (
+  <div className="App">
+    <h1>Hello</h1>
+  </div>
+);
+}
+
+export default App;
+
   /*
   const [tasks, setTasks] = useState([]);
 
@@ -142,11 +146,3 @@ function App() {
     </div>
   );*/
 
-  return (
-    <div>
-
-    </div>
-  );
-}
-
-export default App;
