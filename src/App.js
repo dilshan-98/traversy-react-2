@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AddTask from "./components/AddTask";
 
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
@@ -44,9 +45,18 @@ const App = () => {
     ))
   }
 
+  const submit = (task) => {
+    const id = Math.floor(Math.random() * 10000) + 1;
+
+    const newTask = {...task, id};
+    console.log(newTask)
+    setTasks([...tasks , newTask]);
+  }
+
   return (
     <div className="container">
       <Header title="Tasks Tracker" />
+      <AddTask submit={submit}/>
       {tasks.length > 0 ? (
         <Tasks tasks={tasks} onDelete={deleteItem} onToggle={toggleReminder} />
       ) : (
