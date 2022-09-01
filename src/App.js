@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Tasks from "./components/Tasks";
 
 const App = () => {
-  const [tasks, useTasks] = useState(
+  const [tasks, setTasks] = useState(
     [
       {
         id: 1,
@@ -33,10 +33,14 @@ const App = () => {
     ]
   );
 
+  const deleteItem = (id) => {
+    setTasks(tasks.filter((task) => task.id != id))
+  }
+
   return (
     <div className="App">
       <Header title="Tasks Tracker" />
-      <Tasks tasks={tasks}/>
+      <Tasks tasks={tasks} onDelete={deleteItem} />
     </div>
   );
 }
