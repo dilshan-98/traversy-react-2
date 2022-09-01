@@ -1,9 +1,11 @@
 import Header from "./components/Header";
+import Tasks from "./components/Tasks";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Header title="Tasks Tracker"/>
+      <Tasks />
     </div>
   );
 }
