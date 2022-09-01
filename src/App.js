@@ -38,9 +38,13 @@ const App = () => {
   }
 
   return (
-    <div className="App">
+    <div className="container">
       <Header title="Tasks Tracker" />
-      <Tasks tasks={tasks} onDelete={deleteItem} />
+      {tasks.length > 0 ? (
+        <Tasks tasks={tasks} onDelete={deleteItem} />
+      ) : (
+        "No Tasks To Show!"
+      )}
     </div>
   );
 }
