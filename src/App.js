@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Tasks from "./components/Tasks";
 
 const App = () => {
+  const [showAddTask, setShowAddTask] = useState(false);
   const [tasks, setTasks] = useState(
     [
       {
@@ -48,15 +49,17 @@ const App = () => {
   const submit = (task) => {
     const id = Math.floor(Math.random() * 10000) + 1;
 
-    const newTask = {...task, id};
+    const newTask = { ...task, id };
     console.log(newTask)
-    setTasks([...tasks , newTask]);
+    setTasks([...tasks, newTask]);
   }
+
+
 
   return (
     <div className="container">
-      <Header title="Tasks Tracker" />
-      <AddTask submit={submit}/>
+      <Header title="Tasks Tracker" onAdd={() => setShowAddTask(!showAddTask)} />
+      {showAddTask && <AddTask submit={submit} />}
       {tasks.length > 0 ? (
         <Tasks tasks={tasks} onDelete={deleteItem} onToggle={toggleReminder} />
       ) : (
