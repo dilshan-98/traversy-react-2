@@ -54,11 +54,11 @@ const App = () => {
     setTasks([...tasks, newTask]);
   }
 
-
+  
 
   return (
     <div className="container">
-      <Header title="Tasks Tracker" onAdd={() => setShowAddTask(!showAddTask)} />
+      <Header title="Tasks Tracker" onAdd={() => setShowAddTask(!showAddTask)} showButonState={showAddTask}/>
       {showAddTask && <AddTask submit={submit} />}
       {tasks.length > 0 ? (
         <Tasks tasks={tasks} onDelete={deleteItem} onToggle={toggleReminder} />
