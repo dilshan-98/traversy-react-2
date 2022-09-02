@@ -10,12 +10,6 @@
       "id": 2,
       "text": "Teacher's Appointment",
       "day": "Mar 10th at 5.00PM",
-      "reminder": false
-    },
-    {
-      "id": 9,
-      "text": "Seller's Appointment",
-      "day": "Feb 10th at 5.00PM",
       "reminder": true
     },
     {
@@ -23,6 +17,12 @@
       "text": "Lawyer's Appointment",
       "day": "Feb 17th at 5.00PM",
       "reminder": false
+    },
+    {
+      "text": "qwwr",
+      "day": "tt",
+      "reminder": true,
+      "id": 9
     }
   ]
 }
