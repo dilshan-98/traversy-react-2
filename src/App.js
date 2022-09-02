@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
-import AddTask from "./components/AddTask";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Tasks from "./components/Tasks";
+import AddTask from "./components/AddTask";
+import About from "./components/About";
 
 const App = () => {
   const [showAddTask, setShowAddTask] = useState(false);
@@ -67,7 +70,7 @@ const App = () => {
 
     const gotTask = await res.json();
 
-    const updatedTask = {...gotTask, reminder: !gotTask.reminder};
+    const updatedTask = { ...gotTask, reminder: !gotTask.reminder };
 
     const sendTask = await fetch(`http://localhost:5000/tasks/${id}`, {
       method: "PUT",
@@ -104,15 +107,27 @@ const App = () => {
   }
 
   return (
-    <div className="container">
-      <Header title="Tasks Tracker" onAdd={() => setShowAddTask(!showAddTask)} showButonState={showAddTask} />
-      {showAddTask && <AddTask submit={submit} />}
-      {tasks.length > 0 ? (
-        <Tasks tasks={tasks} onDelete={deleteItem} onToggle={toggleReminder} />
-      ) : (
-        "No Tasks To Show!"
-      )}
-    </div>
+    <Router>
+      <div className="container">
+        <Header title="Tasks Tracker" onAdd={() => setShowAddTask(!showAddTask)} showButonState={showAddTask} />
+        <Routes>
+          <Route path='/' element={
+            <>
+              {showAddTask && <AddTask submit={submit} />}
+              {
+                tasks.length > 0 ? (
+                  <Tasks tasks={tasks} onDelete={deleteItem} onToggle={toggleReminder} />
+                ) : (
+                  "No Tasks To Show!"
+                )
+              }
+            </>
+          } />
+          <Route path='/about' element={<About />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

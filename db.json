@@ -4,7 +4,7 @@
       "id": 1,
       "text": "Doctor's Appointment",
       "day": "Jan 10th at 5.00PM",
-      "reminder": true
+      "reminder": false
     },
     {
       "id": 2,
