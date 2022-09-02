@@ -53,8 +53,13 @@ const App = () => {
     return data;;
   };
 
-  const deleteItem = (id) => {
-    setTasks(tasks.filter((task) => task.id !== id))
+  const deleteItem = async (id) => {
+    // setTasks(tasks.filter((task) => task.id !== id))
+    const res = fetch(`http://localhost:5000/tasks/${id}`, {
+      method: "DELETE",
+    });
+
+    setTasks(tasks.filter((task) => task.id !== id));
   }
 
   const toggleReminder = (id) => {
